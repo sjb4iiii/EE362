@@ -1,0 +1,22 @@
+%%2. Convolution:
+%b
+x = [4, 2,-3,-4,3];
+x_n = [ -2, -1, 0, 1, 2 ];
+h = [1,3,2,4];
+h_n = [-2, -1, 0, 1];
+
+[y,y_n] = newconv(x, x_n, h, h_n);
+% figure
+% stem(y_n,y)
+% xlabel('index')
+% ylabel('Amplitude')
+% title('Convolution Function Test')
+
+
+%c
+n = -5:5;
+h = myunitstep(n) - myunitstep(n-2);
+x1 = mydelta(n) -mydelta(n-2);
+x2 = mydelta(-1*(n-4)) - 3*mydelta(n-4);
+%inj
+[y1 , y1_n] = newconv(h, n, (x1+x2) , n);
